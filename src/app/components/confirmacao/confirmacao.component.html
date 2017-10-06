@@ -1,0 +1,37 @@
+<div class="container" id="print-section">
+  <div class="row">
+    <div class="col-md-12" style="border: 1px solid black; border-radius: 10px">
+      <div class="row">
+        <div class="col-md-4">
+          <img class="text-center" name="logo" src="../assets/img/logo.png" alt="" style="width: 300px; margin-top: 15px">
+        </div>
+        <div class="col-md-4 text-center cabecera">
+          <p>Educação Infantil e Ensino Fundamental</p>
+          <p>Rua Genebra, 1000/ 1063, Nova Suíça</p>
+          <p>CEP: 30.421-121 – Belo Horizonte</p>
+          <p>Tel.: (31) 2526-4194</p>
+        </div>
+      </div>
+    </div>
+  </div><!-- end row -->
+    <!-- <div class="container" id="print-section"> -->
+  <div class="row aire-peq artigo">
+    <div class="col-md-12">
+      <h3 class="text-center" style="margin-top: 5px">ENVIO DE FICHA DE MATRÍCULA - ANO LETIVO 2018</h3>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-9 text-center aire-peq">
+        <h2 class="text-success">Dados guardados com sucesso!</h2>
+        <h4>Código de confirmação de envio: <span class="text-success">{{ id }}</span></h4>
+        <p class="">Obrigado pelo contato.</p>
+    </div>
+    <div class="col-md-offset-1 col-md-2 text-center aire-med">
+      <button (click)="print()"
+              class="btn btn-outline-primary d-print-none"
+              type="button" name="button">
+          Imprimir
+      </button>
+    </div>
+  </div><!-- end row -->
+    <!-- </div> -->
+</div><!-- end container #print-section -->

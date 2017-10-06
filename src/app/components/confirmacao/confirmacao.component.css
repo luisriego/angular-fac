@@ -1,0 +1,23 @@
+.aire-peq{
+  margin-top: 30px;
+  margin-botton: 5px
+}
+.aire-med{
+  margin-top: 50px;
+  margin-bottom: 5px
+}
+.caixa{
+  border: 1px solid darkgrey;
+  padding: 10px
+}
+.aceitar{
+  color: red;
+}
+p{
+  color: #007ab2;
+}
+
+.cabecera{
+  margin-top: 10px;
+  color: #007ab2
+}

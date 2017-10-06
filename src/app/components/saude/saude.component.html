@@ -1,0 +1,244 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" style="border: 1px solid black; border-radius: 10px">
+      <div class="row">
+        <div class="col-md-4">
+          <img class="text-center" name="logo" src="../assets/img/logo.png" alt="" style="width: 300px; margin-top: 15px">
+        </div>
+        <div class="col-md-4 text-center" style="margin-top: 10px; color: #007ab2">
+          <p>Educação Infantil e Ensino Fundamental</p>
+          <p>Rua Genebra, 1000/ 1063, Nova Suíça</p>
+          <p>CEP: 30.421-121 – Belo Horizonte</p>
+          <p>Tel.: (31) 2526-4194</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h5 class="text-center" style="margin-top: 5px">FICHA DE INFORMAÇÕES DE SAÚDE - ANO LETIVO 2018</h5>
+    </div>
+    <div class="col-md-12">
+      <!-- <form (ngSubmit)="alterar()" #forma="ngForm" novalidate>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputNome" class="col-form-label">* Nome:</label>
+            <input type="text" class="form-control" name="nome" placeholder="Nome" [(ngModel)]="candidato.nome" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputSexo" class="col-form-label">Sexo:</label>
+            <select class="form-control" name="Sexo" [(ngModel)]="candidato.sexo">
+              <option value="" default>Selecione uma opção</option>
+              <option value="feminino">Feminino</option>
+              <option value="masculino">Masculino</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputNaturalidade" class="col-form-label">Naturalidade:</label>
+            <input type="text" class="form-control" name="naturalidade" placeholder="Local de nascimento" [(ngModel)]="candidato.naturalidade">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputUF" class="col-form-label">UF:</label>
+            <select class="form-control" name="uf" [(ngModel)]="candidato.uf">
+              <option value="" default>Estado en que nasceu</option>
+              <option
+                    *ngFor="let estado of estados"
+                    [value]="estado.cod">
+                  {{ estado.nome }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="inputDataNascimento" class="col-form-label">Data</label>
+            <input type="date" class="form-control" name="dataNascimento" [(ngModel)]="candidato.dataNascimento">
+          </div>
+          <div class="form-group col-md-2"></div>
+          <div class="form-group col-md-5">
+            <label for="inputIdentidade" class="col-form-label">Certidão de nascimento ou Identidade</label>
+            <input type="text" class="form-control" name="identidade" placeholder="Número da identidade ou Certidão de Nascimento" [(ngModel)]="candidato.identidade">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <label for="inputEndereco" class="col-form-label">Endereço:</label>
+            <input type="text" class="form-control" name="endereco" [(ngModel)]="candidato.endereco">
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputNum" class="col-form-label">Número:</label>
+            <input type="text" class="form-control" name="num" placeholder="Número" [(ngModel)]="candidato.num">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputComplemento" class="col-form-label">Complemento:</label>
+            <input type="text" class="form-control" name="complemento" placeholder="Complemento" [(ngModel)]="candidato.complemento">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputBairro" class="col-form-label">Bairro:</label>
+            <input type="text" class="form-control" name="bairro" [(ngModel)]="candidato.bairro">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputCep" class="col-form-label">CEP:</label>
+            <input type="text" class="form-control" name="cep" [(ngModel)]="candidato.cep">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputTelefone" class="col-form-label">Telefone:</label>
+            <input type="text" class="form-control" name="telefone" [(ngModel)]="candidato.telefone">
+          </div>
+        </div>
+        <hr>
+        <div class="col-md-12 aire-peq">
+          <h4 class="">INFORMAÇÕES</h4>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>1) Seu filho apresenta algum problema grave de saúde?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="problemaGraveSaude" [(ngModel)]="saude.problemaGraveSaude">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>2) Seu filho faz uso constante de algum medicamento controlado?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="remedioControlado" [(ngModel)]="saude.remedioControlado">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>3) Seu filho tem plano de saúde?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="planoSaude" [(ngModel)]="saude.planoSaude">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>4) Seu filho tem algum tipo de alergia?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="alergia" [(ngModel)]="saude.alergia">
+          </div>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-12">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>5) Qual medicamento você costuma dar a seu filho em caso de dor de cabeça ou febre?</strong></label>
+            <input type="text" class="form-control" name="remedioHabitual" [(ngModel)]="saude.remedioHabitual">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>6) Em caso de acidente ou forte mal estar durante o horário da escola, a quem devemos chamar?</strong></label>
+          </div>
+          <div class="form-group col-md-8">
+            <label for="inputProfissaoMae" class="col-form-label">Nome</label>
+            <input type="text" class="form-control" name="contato1nome" [(ngModel)]="saude.contato1nome">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputProfissaoMae" class="col-form-label">Telefone</label>
+            <input type="text" class="form-control" name="contato1tel" [(ngModel)]="saude.contato1tel">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="inputProfissaoMae" class="col-form-label">Nome</label>
+            <input type="text" class="form-control" name="contato2nome" [(ngModel)]="saude.contato2nome">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputProfissaoMae" class="col-form-label">Telefone</label>
+            <input type="text" class="form-control" name="contato2tel" [(ngModel)]="saude.contato2tel">
+          </div>
+        </div>
+
+
+        <div class="form-check aire-peq caixa">
+
+          <label class="form-check-label pull-right active">
+            <input type="checkbox" class="form-check-input pull-right" name="aceita" [(ngModel)]="saude.aceita">
+            <span class="aceitar pull-right">Declaro que as informações fornecidas são verdadeiras:</span>
+          </label>
+        </div>
+
+        <div class="form-row aire-peq">
+          <div class="col-md-12 text-center">
+
+            <button [disabled]="!forma.valid"
+                type="submit"
+                class="btn btn-outline-primary">
+              Enviar o formulário
+            </button>
+          </div>
+        </div>
+      </form> -->
+  </div>
+</div>
