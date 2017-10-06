@@ -1,3 +1,659 @@
-<p>
-  template works!
-</p>
+
+  <div class="row alert" id="print-section">
+    <div class="col-md-12" style="border: 1px solid black; border-radius: 10px">
+      <div class="row">
+        <div class="col-md-4">
+          <img class="text-center" name="logo" src="../assets/img/logo.png" alt="" style="width: 300px; margin-top: 15px">
+        </div>
+        <div class="col-md-4 text-center" style="margin-top: 10px; color: #007ab2">
+          <p>Educação Infantil e Ensino Fundamental</p>
+          <p>Rua Genebra, 1000/ 1063, Nova Suíça</p>
+          <p>CEP: 30.421-121 – Belo Horizonte</p>
+          <p>Tel.: (31) 2526-4194</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 aire-peq">
+      <h5 class="text-center">FICHA DE MATRÍCULA - ANO LETIVO 2018</h5>
+    </div>
+    <div class="col-md-12 aire-peq">
+      <form (ngSubmit)="guardar()" #forma="ngForm" novalidate>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputInfantil" class="col-form-label">* Berçario, Educação Infantil e Ensino Fundamental:</label>
+            <select class="form-control" name="infantil" [(ngModel)]="candidato.infantil" required>
+              <option value="" default>Selecione a turma desejada</option>
+              <option
+                    *ngFor="let turma of turmas"
+                    [value]="turma.cod">
+                  {{ turma.nome }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputInfantil" class="col-form-label">* Selecione o número de horas:</label>
+            <select class="form-control" name="infantil" [(ngModel)]="candidato.horas" required>
+              <option value="" default>Selecione as horas desejadas</option>
+              <option value="4">4 horas</option>
+              <option value="5">5 horas</option>
+              <option value="6">6 horas</option>
+              <option value="7">7 horas</option>
+              <option value="8">8 horas</option>
+              <option value="9">9 horas</option>
+              <option value="10">10 horas</option>
+              <option value="11">11 horas</option>
+              <option value="12">12 horas</option>
+              <option value="13">13 horas</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputNome" class="col-form-label">* Nome:</label>
+            <input type="text" class="form-control" name="nome" placeholder="Nome" [(ngModel)]="candidato.nome" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputSexo" class="col-form-label">Sexo:</label>
+            <select class="form-control" name="Sexo" [(ngModel)]="candidato.sexo">
+              <option value="" default>Selecione uma opção</option>
+              <option value="feminino">Feminino</option>
+              <option value="masculino">Masculino</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputNaturalidade" class="col-form-label">Naturalidade:</label>
+            <input type="text" class="form-control" name="naturalidade" placeholder="Local de nascimento" [(ngModel)]="candidato.naturalidade">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputUF" class="col-form-label">UF:</label>
+            <select class="form-control" name="uf" [(ngModel)]="candidato.uf">
+              <option value="" default>Estado en que nasceu</option>
+              <option
+                    *ngFor="let estado of estados"
+                    [value]="estado.cod">
+                  {{ estado.nome }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="inputDataNascimento" class="col-form-label">Data</label>
+            <input type="date" class="form-control" name="dataNascimento" [(ngModel)]="candidato.dataNascimento">
+          </div>
+          <div class="form-group col-md-2"></div>
+          <div class="form-group col-md-5">
+            <label for="inputIdentidade" class="col-form-label">Certidão de nascimento ou Identidade</label>
+            <input type="text" class="form-control" name="identidade" placeholder="Número da identidade ou Certidão de Nascimento" [(ngModel)]="candidato.identidade">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <label for="inputEndereco" class="col-form-label">Endereço:</label>
+            <input type="text" class="form-control" name="endereco" [(ngModel)]="candidato.endereco">
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputNum" class="col-form-label">Número:</label>
+            <input type="text" class="form-control" name="num" placeholder="Número" [(ngModel)]="candidato.num">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputComplemento" class="col-form-label">Complemento:</label>
+            <input type="text" class="form-control" name="complemento" placeholder="Complemento" [(ngModel)]="candidato.complemento">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputBairro" class="col-form-label">Bairro:</label>
+            <input type="text" class="form-control" name="bairro" [(ngModel)]="candidato.bairro">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputCep" class="col-form-label">CEP:</label>
+            <input type="text" class="form-control" name="cep" [(ngModel)]="candidato.cep">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputTelefone" class="col-form-label">Telefone:</label>
+            <input type="text" class="form-control" name="telefone" [(ngModel)]="candidato.telefone">
+          </div>
+        </div>
+        <hr>
+        <div class="form-row">
+          <div class="col-sm-12">
+            <h6>Dados da certidão de nascimento do aluno:</h6>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputTermo" class="col-form-label">N do Termo:</label>
+            <input type="text" class="form-control" name="termo" [(ngModel)]="candidato.termo">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputFolha" class="col-form-label">Folha:</label>
+            <input type="text" class="form-control" name="folha" [(ngModel)]="candidato.folha">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputLivro" class="col-form-label">Livro:</label>
+            <input type="text" class="form-control" name="livro" [(ngModel)]="candidato.livro">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputDataEmissao" class="col-form-label">Emissão em:</label>
+            <input type="date" class="form-control" name="dataEmissao" [(ngModel)]="candidato.dataEmissao">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputUfCartorio" class="col-form-label">UF/ Cartório:</label>
+            <input type="text" class="form-control" name="ufCartorio" [(ngModel)]="candidato.ufCartorio">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="inputNomeCartorio" class="col-form-label">Nome do Cartório:</label>
+            <input type="text" class="form-control" name="nomeCartorio" [(ngModel)]="candidato.nomeCartorio">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <div class="form-check form-check-inline">
+              <label for="inputUfCartorio" class="col-form-label">Documentos de Identidade?</label>
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="temId" id="idSim" value="sim" [(ngModel)]="candidato.temId"> Sim
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="temId" id="idNao" value="nao" [(ngModel)]="candidato.temId"> Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputNumId" class="col-form-label">Número da Identidade:</label>
+            <input type="text" class="form-control" name="numId" [(ngModel)]="candidato.numId">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputCompId" class="col-form-label">Complemento da Identidade:</label>
+            <input type="text" class="form-control" name="comId" [(ngModel)]="candidato.comId">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-3">
+            <label for="inputDataId" class="col-form-label">Data da Expedição:</label>
+            <input type="data" class="form-control" name="dataId" [(ngModel)]="candidato.dataId">
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputUF" class="col-form-label">UF/ Cartório:</label>
+              <select class="form-control" name="ufId" [(ngModel)]="candidato.ufId">
+                <option value="" default>Estado en que nasceu</option>
+                <option
+                      *ngFor="let estado of estados"
+                      [value]="estado.cod">
+                    {{ estado.nome }}
+                </option>
+              </select>
+            </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-6">
+            <label for="inputOrgaoId" class="col-form-label">Órgão Emissor da Identidade:</label>
+            <input type="text" class="form-control" name="orgaoId" [(ngModel)]="candidato.orgaoId">
+          </div>
+        </div>
+        <hr>
+        <h6>Dados do Pai:</h6>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputNomePai" class="col-form-label">Nome do Pai:</label>
+            <input type="text" class="form-control" name="nomePai" [(ngModel)]="candidato.nomePai">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-3">
+            <label for="inputNascPai" class="col-form-label">Data de nascimento:</label>
+            <input type="date" class="form-control" name="nascPai" [(ngModel)]="candidato.nascPai">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputIdPai" class="col-form-label">Identidade:</label>
+            <input type="text" class="form-control" name="idPai" [(ngModel)]="candidato.idPai">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-6">
+            <label for="inputCpfPai" class="col-form-label">CPF:</label>
+            <input type="text" class="form-control" name="cpfPai" [(ngModel)]="candidato.cpfPai">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputIntrucaoPai" class="col-form-label">Grau de instrução:</label>
+            <input type="text" class="form-control" name="instrucaoPai" [(ngModel)]="candidato.instrucaoPai">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoPai" class="col-form-label">Profissão:</label>
+            <input type="text" class="form-control" name="profissaoPai" [(ngModel)]="candidato.instrucaoPai">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputLocalTrbPai" class="col-form-label">Local de trabalho:</label>
+            <input type="text" class="form-control" name="localTrbPai" [(ngModel)]="candidato.localTrbPai">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputTelfPai" class="col-form-label">Telefone:</label>
+            <input type="tel" class="form-control" name="telfPai" [(ngModel)]="candidato.telfPai">
+          </div>
+          <div class="form-group col-md-4" has-warning>
+            <label for="labelCelularPai" class="col-form-label">* Celular:</label>
+            <input type="tel" class="form-control" name="celularPai" [(ngModel)]="candidato.celularPai">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail" class="col-form-label">* Email:</label>
+            <input type="email" class="form-control" name="emailPai" [(ngModel)]="candidato.emailPai">
+          </div>
+        </div>
+        <hr>
+        <h6>Dados da Mãe:</h6>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputNomeMae" class="col-form-label">Nome da Mãe:</label>
+            <input type="text" class="form-control" name="nomeMae" [(ngModel)]="candidato.nomeMae">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-3">
+            <label for="inputNascMae" class="col-form-label">Data de nascimento:</label>
+            <input type="date" class="form-control" name="nascMae" [(ngModel)]="candidato.nascMae">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputIdMae" class="col-form-label">Identidade:</label>
+            <input type="text" class="form-control" name="idMae" [(ngModel)]="candidato.idMae">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-6">
+            <label for="inputCpfMae" class="col-form-label">CPF:</label>
+            <input type="text" class="form-control" name="cpfMae" [(ngModel)]="candidato.cpfMae">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputIntrucaoMae" class="col-form-label">Grau de instrução:</label>
+            <input type="text" class="form-control" name="instrucaoMae" [(ngModel)]="candidato.instrucaoMae">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label">Profissão:</label>
+            <input type="text" class="form-control" name="profissaoMae" [(ngModel)]="candidato.profissaoMae">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputLocalTrbMae" class="col-form-label">Local de trabalho:</label>
+            <input type="text" class="form-control" name="localTrbMae" [(ngModel)]="candidato.localTrbMae">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputTelfMae" class="col-form-label">Telefone:</label>
+            <input type="tel" class="form-control" name="telfMae" [(ngModel)]="candidato.telfMae">
+          </div>
+          <div class="form-group col-md-4" has-warning>
+            <label for="labelCelularMae" class="col-form-label">* Celular:</label>
+            <input type="tel" class="form-control" name="celularMae" [(ngModel)]="candidato.celularMae">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail" class="col-form-label">* Email:</label>
+            <input type="email" class="form-control" name="emailMae" [(ngModel)]="candidato.emailMae">
+          </div>
+        </div>
+        <hr>
+        <div class="form-row aire-peq">
+          <div class="form-group col-md-8">
+            <label for="inputNomeMae" class="col-form-label">* Nome do responsável pelo (a) aluno (a):</label>
+            <input type="text" class="form-control" name="responsavelDoenca" [(ngModel)]="candidato.responsavelDoenca">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputNomeMae" class="col-form-label">Necessidades Educacionais Especiais?</label>
+            <input type="text" class="form-control" name="necessidadeEspeciais" [(ngModel)]="candidato.necessidadeEspeciais">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputNomeMae" class="col-form-label">* Última escola frequentada pelo aluno:</label>
+            <input type="text" class="form-control" name="ultimaEscola" [(ngModel)]="candidato.ultimaEscola">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="inputNomeMae" class="col-form-label">Faz algum tratamento de saúde:</label>
+            <input type="text" class="form-control" name="tratamento" [(ngModel)]="candidato.tratamento">
+          </div>
+          <div class="form-group col-md-9">
+            <label for="inputNomeMae" class="col-form-label">Qual?:</label>
+            <input type="text" class="form-control" name="qualTratamento" [(ngModel)]="candidato.qualTratamento">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputAlergico" class="col-form-label">É alérgico?</label>
+            <input type="text" class="form-control" name="alergico" [(ngModel)]="candidato.alergico">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputNomeMae" class="col-form-label">Em caso de febre qual medicação?</label>
+            <input type="text" class="form-control" name="medicacao" [(ngModel)]="candidato.medicacao">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputNomeMae" class="col-form-label">Dosagem:</label>
+            <input type="text" class="form-control" name="dosagem" [(ngModel)]="candidato.dosagem">
+          </div>
+        </div>
+
+        <hr>
+        <div class="form-row aire-peq">
+          <div class="form-group col-md-9">
+            <label for="inputFinanceiro" class="col-form-label">* Responsável financeiro:</label>
+            <input type="text" class="form-control" name="responsavel" [(ngModel)]="candidato.responsavel">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputNascResponsavel" class="col-form-label">* Data de nascimento:</label>
+            <input type="text" class="form-control" name="nascResponsavel" [(ngModel)]="candidato.nascResponsavel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputIdMae" class="col-form-label">* Identidade:</label>
+            <input type="text" class="form-control" name="idResponsavel" [(ngModel)]="candidato.idResponsavel">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-6">
+            <label for="inputCpfMae" class="col-form-label">* CPF:</label>
+            <input type="text" class="form-control" name="cpfResponsavel" [(ngModel)]="candidato.cpfResponsavel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputIntrucaoMae" class="col-form-label">Grau de instrução:</label>
+            <input type="text" class="form-control" name="instrucaoResponsavel" [(ngModel)]="candidato.instrucaoResponsavel">
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label">Profissão:</label>
+            <input type="text" class="form-control" name="profissaoResponsavel" [(ngModel)]="candidato.profissaoResponsavel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputLocalTrbMae" class="col-form-label">* Local de trabalho:</label>
+            <input type="text" class="form-control" name="localTrbResp" [(ngModel)]="candidato.localTrbResp">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="inputTelfMae" class="col-form-label">* Telefone:</label>
+            <input
+                  type="tel"
+                  class="form-control"
+                  name="telfResp"
+                  [(ngModel)]="candidato.telfResp"
+                  pattern="\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}"
+                  #telfResp="ngModel">
+                  <div
+                      *ngIf="telfResp.errors?.pattern"
+                      class="form-control-feedback">
+                    O telefone deve ter o formato: (##) ####-####
+                  </div>
+          </div>
+          <div class="form-group col-md-4" has-warning>
+            <label for="labelCelularMae" class="col-form-label">* Celular:</label>
+            <input
+                  type="tel"
+                  class="form-control"
+                  name="celularResp"
+                  [(ngModel)]="candidato.celularResp"
+                  pattern="\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}"
+                  #celularResp="ngModel">
+                  <div
+                      *ngIf="celularResp.errors?.pattern"
+                      class="form-control-feedback">
+                    O Celular deve ter o formato: (##) 9####-####
+                  </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputEmail" class="col-form-label">* Email:</label>
+            <input
+                  type="email"
+                  class="form-control"
+                  name="emailResp"
+                  [(ngModel)]="candidato.emailResp"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="inputProfissaoMae" class="col-form-label">Declarante do imposto de renda?</label>
+          </div>
+          <div class="form-group col-md-2">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-1"></div>
+          <div class="form-group col-md-1">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+          </div>
+          <div class="form-group col-md-2">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="tipoDeclaracao" [(ngModel)]="candidato.tipoDeclaracao" id="simplificada" value="simplificada">
+                Simplificado
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="tipoDeclaracao" [(ngModel)]="candidato.tipoDeclaracao" id="completa" value="completa">
+                Completo
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <div class="col-md-12 aire-peq">
+          <h4 class="">INFORMAÇÕES</h4>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>1) Seu filho apresenta algum problema grave de saúde?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="problemaGraveSaude" [(ngModel)]="candidato.problemaGraveSaude">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>2) Seu filho faz uso constante de algum medicamento controlado?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="remedioControlado" [(ngModel)]="candidato.remedioControlado">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>3) Seu filho tem plano de saúde?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="planoSaude" [(ngModel)]="candidato.planoSaude">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>4) Seu filho tem algum tipo de alergia?</strong></label>
+          </div>
+          <div class="form-group col-md-1">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaSim" value="sim" checked>
+                Sim
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="declaraRenda" ngModel id="rendaNao" value="nao">
+                Não
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputProfissaoMae" class="col-form-label">Qual?</label>
+            <input type="text" class="form-control" name="alergia" [(ngModel)]="candidato.alergia">
+          </div>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-12">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>5) Qual medicamento você costuma dar a seu filho em caso de dor de cabeça ou febre?</strong></label>
+            <input type="text" class="form-control" name="remedioHabitual" [(ngModel)]="candidato.remedioHabitual">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="inputProfissaoMae" class="col-form-label"><strong>6) Em caso de acidente ou forte mal estar durante o horário da escola, a quem devemos chamar?</strong></label>
+          </div>
+          <div class="form-group col-md-8">
+            <label for="inputProfissaoMae" class="col-form-label">Nome</label>
+            <input type="text" class="form-control" name="contato1nome" [(ngModel)]="candidato.contato1nome">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputProfissaoMae" class="col-form-label">Telefone</label>
+            <input type="text" class="form-control" name="contato1tel" [(ngModel)]="candidato.contato1tel">
+          </div>
+          <div class="form-group col-md-8">
+            <label for="inputProfissaoMae" class="col-form-label">Nome</label>
+            <input type="text" class="form-control" name="contato2nome" [(ngModel)]="candidato.contato2nome">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputProfissaoMae" class="col-form-label">Telefone</label>
+            <input type="text" class="form-control" name="contato2tel" [(ngModel)]="candidato.contato2tel">
+          </div>
+        </div>
+
+
+        <div class="form-check aire-peq caixa">
+            <h3>Aqui pode ir o contrato, <small>favor enviar o cotrato para que possamos inclui-lo</small></h3>
+            <p>devemos eliminar o texto abaixo?</p>
+            <p>
+              Por tanto, declaro que conheço as normas regimentais do
+              estabelecimento de ensino e, em caso de renovação de matricula,
+              que possuem qualquer débito em aberto, estando ciente de que, em
+              tal hipótese, nos termos do art.5o da lei 9.870/99, poderá a
+              matricula ser rejeitada.
+            </p>
+            <p>
+              Declaram, por igual, estar cientes de que o deferimento da
+              matricula ora pleiteada está condicionada à existência de vaga,
+              bem como a verificação das demais condições expressa na legislação
+              de ensino.
+            </p>
+            <p>
+              Finalmente, em caso de deferimento do pedido, afirmam estar
+              cientes de que esta ficha de matricula passa a fazer parte
+              integrante do contrato de prestação de serviços.
+            </p>
+          <label class="form-check-label pull-right aire-peq active">
+            <input type="checkbox" class="form-check-input pull-right" name="aceita" [(ngModel)]="candidato.aceita" required>
+            <span class="aceitar pull-right">Aceito as Condições:</span>
+          </label>
+        </div>
+
+        <div class="form-row aire-peq">
+          <!-- <div class="col-md-10"></div> -->
+          <div class="col-md-12 text-center">
+
+            <button [disabled]="!forma.valid"
+                type="submit"
+                class="btn btn-outline-primary">
+              Enviar o formulário
+            </button>
+            <!-- <button (click)=print()
+                    type="button"
+                    class="btn btn-outline-primary">
+                Imprimir
+            </button> -->
+          </div>
+        </div>
+      </form>
+  </div>
+</div>
